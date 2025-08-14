@@ -1,0 +1,598 @@
+<html lang="zh-CN"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的个人空间</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4F46E5',
+                        secondary: '#10B981',
+                        accent: '#F59E0B',
+                        dark: '#1F2937',
+                        light: '#F3F4F6'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .card-hover {
+                transition: all 0.3s ease;
+            }
+            .card-hover:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans text-gray-800">
+    <!-- 导航栏 -->
+    <nav id="navbar" class="fixed w-full bg-white/90 backdrop-blur-sm shadow-sm z-50 transition-all duration-300">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#" class="text-primary font-bold text-xl flex items-center gap-2">
+                <i class="fa fa-user-circle"></i>
+                <span>我的空间</span>
+            </a>
+            
+            <!-- 桌面导航 -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#profile" class="hover:text-primary transition-colors">个人资料</a>
+                <a href="#interests" class="hover:text-primary transition-colors">兴趣爱好</a>
+                <a href="#posts" class="hover:text-primary transition-colors">我的动态</a>
+                <a href="#contact" class="hover:text-primary transition-colors">联系我</a>
+            </div>
+            
+            <!-- 移动端菜单按钮 -->
+            <button id="menuBtn" class="md:hidden text-gray-700 focus:outline-none">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+        </div>
+        
+        <!-- 移动端导航菜单 -->
+        <div id="mobileMenu" class="md:hidden hidden bg-white border-t">
+            <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
+                <a href="#profile" class="py-2 hover:text-primary transition-colors">个人资料</a>
+                <a href="#interests" class="py-2 hover:text-primary transition-colors">兴趣爱好</a>
+                <a href="#posts" class="py-2 hover:text-primary transition-colors">我的动态</a>
+                <a href="#contact" class="py-2 hover:text-primary transition-colors">联系我</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 头部横幅 -->
+    <header class="pt-20 pb-16 bg-gradient-to-r from-primary to-primary/80 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <div class="relative inline-block">
+                <img src="https://picsum.photos/id/64/200/200" alt="个人头像" class="w-36 h-36 rounded-full border-4 border-white object-cover">
+                <span class="absolute bottom-0 right-0 bg-secondary rounded-full p-2 border-2 border-white">
+                    <i class="fa fa-check text-white"></i>
+                </span>
+            </div>
+            <h1 class="mt-4 text-[clamp(1.8rem,5vw,2.5rem)] font-bold text-shadow">马欣宇</h1>
+            <p class="text-lg mt-2 max-w-2xl mx-auto opacity-90">热爱生活的设计师 &amp; 摄影师 | 分享日常与灵感</p>
+            <div class="mt-6 flex justify-center gap-4">
+                <button class="bg-white text-primary px-6 py-2 rounded-full font-medium hover:bg-opacity-90 transition-all">
+                    <i class="fa fa-plus mr-2"></i>关注
+                </button>
+                <button class="bg-transparent border-2 border-white px-6 py-2 rounded-full font-medium hover:bg-white/10 transition-all">
+                    <i class="fa fa-envelope mr-2"></i>私信
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主要内容 -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- 个人资料 -->
+        <section id="profile" class="mb-16 scroll-mt-20">
+            <h2 class="text-3xl font-bold mb-8 text-center">个人资料</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl shadow-md p-6 card-hover">
+                    <div class="flex items-start gap-4">
+                        <div class="bg-primary/10 p-3 rounded-full text-primary">
+                            <i class="fa fa-info-circle text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-lg mb-2">基本信息</h3>
+                            <ul class="space-y-2 text-gray-600">
+                                <li class="flex items-center gap-2">
+                                    <i class="fa fa-calendar-o w-5 text-gray-400"></i>
+                                    <span>1995年5月出生</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i class="fa fa-map-marker w-5 text-gray-400"></i>
+                                    <span>居住在上海</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i class="fa fa-briefcase w-5 text-gray-400"></i>
+                                    <span>UI/UX设计师 @科技公司</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i class="fa fa-graduation-cap w-5 text-gray-400"></i>
+                                    <span>同济大学 设计系</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-md p-6 card-hover">
+                    <div class="flex items-start gap-4">
+                        <div class="bg-secondary/10 p-3 rounded-full text-secondary">
+                            <i class="fa fa-heart text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-lg mb-2">个人简介</h3>
+                            <p class="text-gray-600 leading-relaxed">
+                                我是一名热爱生活的设计师，喜欢用镜头记录美好瞬间，用设计传递情感。
+                                闲暇时喜欢旅行、阅读和尝试各种美食。希望在这里分享我的生活点滴和创作灵感。
+                            </p>
+                            <p class="text-gray-600 leading-relaxed mt-2">
+                                人生格言：保持好奇，不断探索，享受每一个当下。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-md p-6 card-hover">
+                    <div class="flex items-start gap-4">
+                        <div class="bg-accent/10 p-3 rounded-full text-accent">
+                            <i class="fa fa-bar-chart text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-lg mb-2">数据统计</h3>
+                            <div class="grid grid-cols-3 gap-2 text-center">
+                                <div class="p-3">
+                                    <div class="text-2xl font-bold text-primary">248</div>
+                                    <div class="text-sm text-gray-500">动态</div>
+                                </div>
+                                <div class="p-3">
+                                    <div class="text-2xl font-bold text-primary">1.2k</div>
+                                    <div class="text-sm text-gray-500">粉丝</div>
+                                </div>
+                                <div class="p-3">
+                                    <div class="text-2xl font-bold text-primary">356</div>
+                                    <div class="text-sm text-gray-500">关注</div>
+                                </div>
+                            </div>
+                            <div class="mt-4 pt-4 border-t border-gray-100">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-600">入驻时间</span>
+                                    <span class="font-medium">2020年3月</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 兴趣爱好 -->
+        <section id="interests" class="mb-16 scroll-mt-20">
+            <h2 class="text-3xl font-bold mb-8 text-center">兴趣爱好</h2>
+            
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="relative rounded-xl overflow-hidden group h-64 card-hover">
+                    <img src="https://picsum.photos/id/96/600/400" alt="摄影" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-6">
+                        <h3 class="text-white text-xl font-bold">摄影</h3>
+                        <p class="text-white/80 mt-1">用镜头捕捉生活中的美好瞬间</p>
+                    </div>
+                </div>
+                
+                <div class="relative rounded-xl overflow-hidden group h-64 card-hover">
+                    <img src="https://picsum.photos/id/292/600/400" alt="旅行" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-6">
+                        <h3 class="text-white text-xl font-bold">旅行</h3>
+                        <p class="text-white/80 mt-1">探索不同的地方，体验多样文化</p>
+                    </div>
+                </div>
+                
+                <div class="relative rounded-xl overflow-hidden group h-64 card-hover">
+                    <img src="https://picsum.photos/id/431/600/400" alt="阅读" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-6">
+                        <h3 class="text-white text-xl font-bold">阅读</h3>
+                        <p class="text-white/80 mt-1">在文字中寻找灵感和知识</p>
+                    </div>
+                </div>
+                
+                <div class="relative rounded-xl overflow-hidden group h-64 card-hover">
+                    <img src="https://picsum.photos/id/488/600/400" alt="美食" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-6">
+                        <h3 class="text-white text-xl font-bold">美食</h3>
+                        <p class="text-white/80 mt-1">品尝和制作各种美味佳肴</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 我的动态 -->
+        <section id="posts" class="mb-16 scroll-mt-20">
+            <h2 class="text-3xl font-bold mb-8 text-center">我的动态</h2>
+            
+            <div class="space-y-8">
+                <!-- 动态1 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                    <div class="p-6">
+                        <div class="flex items-center gap-3">
+                            <img src="https://picsum.photos/id/64/100/100" alt="个人头像" class="w-10 h-10 rounded-full object-cover">
+                            <div>
+                                <div class="font-medium">马欣宇</div>
+                                <div class="text-sm text-gray-500">2小时前</div>
+                            </div>
+                        </div>
+                        
+                        <p class="mt-4 text-gray-700">
+                            今天去了郊外的森林公园，天气特别好，拍了很多漂亮的照片。大自然的色彩总是能给我带来灵感，推荐大家有空也多去户外走走~
+                        </p>
+                        
+                        <div class="mt-4 grid grid-cols-2 gap-2">
+                            <img src="https://picsum.photos/id/15/600/400" alt="公园风景" class="rounded-lg w-full h-48 object-cover">
+                            <img src="https://picsum.photos/id/28/600/400" alt="公园风景" class="rounded-lg w-full h-48 object-cover">
+                        </div>
+                        
+                        <div class="mt-4 flex justify-between items-center border-t border-gray-100 pt-4">
+                            <button class="flex items-center gap-2 text-gray-500 hover:text-primary transition-colors">
+                                <i class="fa fa-heart-o"></i>
+                                <span>128</span>
+                            </button>
+                            <button class="flex items-center gap-2 text-gray-500 hover:text-primary transition-colors">
+                                <i class="fa fa-comment-o"></i>
+                                <span>32</span>
+                            </button>
+                            <button class="flex items-center gap-2 text-gray-500 hover:text-primary transition-colors">
+                                <i class="fa fa-share"></i>
+                                <span>分享</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 动态2 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                    <div class="p-6">
+                        <div class="flex items-center gap-3">
+                            <img src="https://picsum.photos/id/64/100/100" alt="个人头像" class="w-10 h-10 rounded-full object-cover">
+                            <div>
+                                <div class="font-medium">马欣宇</div>
+                                <div class="text-sm text-gray-500">昨天 18:30</div>
+                            </div>
+                        </div>
+                        
+                        <p class="mt-4 text-gray-700">
+                            周末尝试做了一道新菜 - 香煎三文鱼配芦笋，味道还不错！分享给大家，做法其实很简单，关键是火候的掌握。
+                        </p>
+                        
+                        <div class="mt-4">
+                            <img src="https://picsum.photos/id/488/800/500" alt="美食" class="rounded-lg w-full h-64 object-cover">
+                        </div>
+                        
+                        <div class="mt-4 flex justify-between items-center border-t border-gray-100 pt-4">
+                            <button class="flex items-center gap-2 text-gray-500 hover:text-primary transition-colors">
+                                <i class="fa fa-heart-o"></i>
+                                <span>256</span>
+                            </button>
+                            <button class="flex items-center gap-2 text-gray-500 hover:text-primary transition-colors">
+                                <i class="fa fa-comment-o"></i>
+                                <span>48</span>
+                            </button>
+                            <button class="flex items-center gap-2 text-gray-500 hover:text-primary transition-colors">
+                                <i class="fa fa-share"></i>
+                                <span>分享</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 动态3 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                    <div class="p-6">
+                        <div class="flex items-center gap-3">
+                            <img src="https://picsum.photos/id/64/100/100" alt="个人头像" class="w-10 h-10 rounded-full object-cover">
+                            <div>
+                                <div class="font-medium">马欣宇</div>
+                                <div class="text-sm text-gray-500">3天前</div>
+                            </div>
+                        </div>
+                        
+                        <p class="mt-4 text-gray-700">
+                            最近在读的一本书《设计中的设计》，非常推荐给从事设计行业的朋友。书中对设计的理解和思考很有启发性，让我对自己的工作有了新的认识。
+                        </p>
+                        
+                        <div class="mt-4">
+                            <img src="https://picsum.photos/id/24/800/500" alt="书籍" class="rounded-lg w-full h-64 object-cover">
+                        </div>
+                        
+                        <div class="mt-4 flex justify-between items-center border-t border-gray-100 pt-4">
+                            <button class="flex items-center gap-2 text-gray-500 hover:text-primary transition-colors">
+                                <i class="fa fa-heart-o"></i>
+                                <span>189</span>
+                            </button>
+                            <button class="flex items-center gap-2 text-gray-500 hover:text-primary transition-colors">
+                                <i class="fa fa-comment-o"></i>
+                                <span>27</span>
+                            </button>
+                            <button class="flex items-center gap-2 text-gray-500 hover:text-primary transition-colors">
+                                <i class="fa fa-share"></i>
+                                <span>分享</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 加载更多按钮 -->
+                <div class="text-center">
+                    <button id="loadMoreBtn" class="px-6 py-3 bg-white border border-primary text-primary rounded-full font-medium hover:bg-primary/5 transition-all">
+                        加载更多
+                        <i class="fa fa-angle-down ml-2"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 联系我 -->
+        <section id="contact" class="mb-16 scroll-mt-20">
+            <h2 class="text-3xl font-bold mb-8 text-center">联系我</h2>
+            
+            <div class="bg-white rounded-xl shadow-md p-8 max-w-3xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4">联系方式</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-center gap-3">
+                                <div class="bg-primary/10 p-2 rounded-full text-primary">
+                                    <i class="fa fa-envelope"></i>
+                                </div>
+                                <span>maxinyu@example.com</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <div class="bg-primary/10 p-2 rounded-full text-primary">
+                                    <i class="fa fa-weixin"></i>
+                                </div>
+                                <span>maxinyu_design</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <div class="bg-primary/10 p-2 rounded-full text-primary">
+                                    <i class="fa fa-weibo"></i>
+                                </div>
+                                <span>@马欣宇设计日记</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <div class="bg-primary/10 p-2 rounded-full text-primary">
+                                    <i class="fa fa-instagram"></i>
+                                </div>
+                                <span>maxinyu_photo</span>
+                            </li>
+                        </ul>
+                        
+                        <div class="mt-8">
+                            <h3 class="text-xl font-semibold mb-4">社交平台</h3>
+                            <div class="flex gap-4">
+                                <a href="#" class="bg-[#1DA1F2]/10 p-3 rounded-full text-[#1DA1F2] hover:bg-[#1DA1F2]/20 transition-colors">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                                <a href="#" class="bg-[#E4405F]/10 p-3 rounded-full text-[#E4405F] hover:bg-[#E4405F]/20 transition-colors">
+                                    <i class="fa fa-instagram"></i>
+                                </a>
+                                <a href="#" class="bg-[#0A66C2]/10 p-3 rounded-full text-[#0A66C2] hover:bg-[#0A66C2]/20 transition-colors">
+                                    <i class="fa fa-linkedin"></i>
+                                </a>
+                                <a href="#" class="bg-[#FF0000]/10 p-3 rounded-full text-[#FF0000] hover:bg-[#FF0000]/20 transition-colors">
+                                    <i class="fa fa-youtube-play"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4">发送消息</h3>
+                        <form id="messageForm" class="space-y-4">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">你的名字</label>
+                                <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors" placeholder="请输入你的名字">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">邮箱地址</label>
+                                <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors" placeholder="请输入你的邮箱">
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700 mb-1">消息内容</label>
+                                <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors" placeholder="请输入你想对我说的话"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-primary text-white py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors">
+                                发送消息
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                        <i class="fa fa-user-circle"></i>
+                        <span>我的空间</span>
+                    </h3>
+                    <p class="text-gray-400">
+                        分享生活点滴，记录美好瞬间，交流设计灵感。
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-lg mb-4">快速链接</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#profile" class="hover:text-white transition-colors">个人资料</a></li>
+                        <li><a href="#interests" class="hover:text-white transition-colors">兴趣爱好</a></li>
+                        <li><a href="#posts" class="hover:text-white transition-colors">我的动态</a></li>
+                        <li><a href="#contact" class="hover:text-white transition-colors">联系我</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-lg mb-4">相关资源</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">摄影作品</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">设计案例</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">旅行博客</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">阅读推荐</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-lg mb-4">订阅更新</h4>
+                    <p class="text-gray-400 mb-4">订阅我的动态，获取最新更新</p>
+                    <form class="flex">
+                        <input type="email" placeholder="你的邮箱地址" class="px-4 py-2 rounded-l-lg w-full focus:outline-none text-gray-800">
+                        <button type="submit" class="bg-primary px-4 py-2 rounded-r-lg hover:bg-primary/90 transition-colors">
+                            <i class="fa fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="mt-10 pt-6 border-t border-gray-800 text-center text-gray-500">
+                <p>© 2023 我的个人空间. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 返回顶部按钮 -->
+    <button id="backToTop" class="fixed bottom-8 right-8 bg-primary text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-primary/90">
+        <i class="fa fa-arrow-up"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script>
+        // 移动端菜单切换
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            // 切换图标
+            const icon = menuBtn.querySelector('i');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.replace('fa-bars', 'fa-times');
+            } else {
+                icon.classList.replace('fa-times', 'fa-bars');
+            }
+        });
+        
+        // 导航栏滚动效果
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('py-2', 'shadow');
+                navbar.classList.remove('py-3');
+            } else {
+                navbar.classList.add('py-3');
+                navbar.classList.remove('py-2', 'shadow');
+            }
+        });
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                // 关闭移动菜单（如果打开）
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                    const icon = menuBtn.querySelector('i');
+                    icon.classList.replace('fa-times', 'fa-bars');
+                }
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // 返回顶部按钮
+        const backToTopBtn = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTopBtn.classList.remove('opacity-0', 'invisible');
+                backToTopBtn.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopBtn.classList.add('opacity-0', 'invisible');
+                backToTopBtn.classList.remove('opacity-100', 'visible');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // 消息表单提交
+        const messageForm = document.getElementById('messageForm');
+        
+        messageForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // 获取表单数据
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            // 简单验证
+            if (!name || !email || !message) {
+                alert('请填写完整信息');
+                return;
+            }
+            
+            // 模拟提交成功
+            alert('消息发送成功！感谢您的留言，我会尽快回复。');
+            messageForm.reset();
+        });
+        
+        // 加载更多按钮
+        const loadMoreBtn = document.getElementById('loadMoreBtn');
+        let isLoading = false;
+        
+        loadMoreBtn.addEventListener('click', async () => {
+            if (isLoading) return;
+            
+            isLoading = true;
+            loadMoreBtn.innerHTML = '<i class="fa fa-spinner fa-spin mr-2"></i>加载中...';
+            
+            // 模拟加载延迟
+            await new Promise(resolve => setTimeout(resolve, 1500));
+            
+            // 恢复按钮状态
+            loadMoreBtn.innerHTML = '加载更多<i class="fa fa-angle-down ml-2"></i>';
+            isLoading = false;
+            
+            // 提示没有更多内容
+            alert('已经加载完所有动态');
+        });
+    </script>
+
+
+</body></html>
+    
